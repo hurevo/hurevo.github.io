@@ -61,8 +61,7 @@ export default function NavbarSection({
 }: NavbarProps) {
   return (
     <header className={cn("sticky top-0 z-50 pt-4 px-4", className)}>
-      <div className="fade-bottom bg-background/60 absolute left-0 top-0 h-28 w-full backdrop-blur-md -z-10"></div>
-      <div className="max-w-6xl relative mx-auto">
+      <div className="max-w-6xl relative mx-auto bg-background/60 backdrop-blur-md rounded-full px-5">
         <NavbarComponent>
           <NavbarLeft>
             <a
@@ -127,6 +126,7 @@ export default function NavbarSection({
                     href={homeUrl}
                     className="flex items-center gap-2 text-xl font-bold"
                   >
+                         {logo}
                     <span>{name}</span>
                   </a>
                   {mobileLinks.map((link, index) => (

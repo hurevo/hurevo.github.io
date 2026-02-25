@@ -1,6 +1,6 @@
 // @ts-ignore
 import * as m from '@/paraglide/messages';
-import { Button } from '@/components/ui/button';
+import GlowingBorderButton from '../glowing-border-button';
 
 export function HeroSection() {
   const scrollToContact = () => {
@@ -22,9 +22,9 @@ export function HeroSection() {
       </p>
 
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
-        <Button size="lg" className="h-14 px-8 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/25 transition-all" onClick={scrollToContact}>
-          {m.heroCTA()}
-        </Button>
+        <GlowingBorderButton onClick={scrollToContact} >
+            {m.heroCTA()}
+        </GlowingBorderButton>
       </div>
     </section>
   );

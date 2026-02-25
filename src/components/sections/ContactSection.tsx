@@ -73,7 +73,7 @@ export function ContactSection() {
                   />
                 </div>
 
-                <Button type="submit" className="w-full h-12 text-md">
+                <Button type="submit" className="w-full h-12 text-xl font-semibold">
                   Get Started
                 </Button>
               </form>
