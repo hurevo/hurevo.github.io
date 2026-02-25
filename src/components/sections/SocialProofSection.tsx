@@ -1,3 +1,5 @@
+import { ProjectCardList } from "../project-card";
+
 export function SocialProofSection() {
   const techLogos = [
     'react.svg', 'typescript.svg', 'laravel.svg','claude.png', 'php.png', 'n8n.png', 'langchain.png'
@@ -18,10 +20,7 @@ export function SocialProofSection() {
           ))}
         </div>
 
-        <div className="mt-16 bg-muted/50 rounded-2xl p-8 border border-border/50 flex flex-col items-center justify-center min-h-75">
-          <h3 className="text-2xl font-semibold mb-4 text-foreground/80">Sample Projects Coming Soon</h3>
-          <p className="text-muted-foreground max-w-md">Our portfolio of recent success stories is currently being updated. Contact us to see our latest work.</p>
-        </div>
+        <ProjectCardList />
       </div>
     </section>
   );
