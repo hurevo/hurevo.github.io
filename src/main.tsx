@@ -1,11 +1,32 @@
-import { StrictMode } from "react"
-import { createRoot } from "react-dom/client"
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
+import { routeTree } from './routeTree.gen';
+import './index.css';
 
-import "./index.css"
-import App from "./App.tsx"
+// @ts-ignore
+import { deLocalizeUrl, localizeUrl } from './paraglide/runtime';
 
-createRoot(document.getElementById("root")!).render(
+// Create a new router instance
+const router = createRouter({
+  routeTree,
+  // Add Paraglide URL rewriting for localized paths
+  // Using explicit localizer paths will configure the router correctly without the helper library overhead right now
+  rewrite: {
+    input: ({ url }) => deLocalizeUrl(url),
+    output: ({ url }) => localizeUrl(url),
+  }
+});
+
+// Register the router instance for type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>
-)
+);

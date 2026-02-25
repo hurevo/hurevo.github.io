@@ -5,7 +5,7 @@ export default function CalBooking() {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({"namespace":"30min"});
-      cal("ui", {"theme":"light","cssVarsPerTheme":{"dark":{"cal-brand":"#15BA81"}},"hideEventTypeDetails":false,"layout":"week_view"});
+      cal("ui", {"theme":"light","cssVarsPerTheme":{"dark":{"cal-brand":"#15BA81"},"light":{"cal-brand":"#15BA81"}},"hideEventTypeDetails":false,"layout":"week_view"});
     })();
   }, [])
   return <Cal namespace="30min"

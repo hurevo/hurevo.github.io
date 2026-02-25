@@ -11,7 +11,6 @@ import {
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
-import Navigation from "../../ui/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 
 interface NavbarLink {
@@ -74,12 +73,14 @@ export default function Navbar({
               {logo}
               {name}
             </a>
-            {showNavigation && (customNavigation || <Navigation />)}
+            {showNavigation && customNavigation}
           </NavbarLeft>
           <NavbarRight>
             {actions.map((action, index) =>
               action.isButton ? (
-                <Button key={index} variant={action.variant || "default"} render={<a href={action.href} />} nativeButton={false}>{action.icon}{action.text}{action.iconRight}</Button>
+                <Button key={index} variant={action.variant || "default"} render={<a href={action.href} />}>
+                  {action.icon}{action.text}{action.iconRight}
+                </Button>
               ) : (
                 <a
                   key={index}
@@ -91,7 +92,12 @@ export default function Navbar({
               ),
             )}
             <Sheet>
-              <SheetTrigger render={<Button variant="ghost" size="icon" className="shrink-0 md:hidden" />}><Menu className="size-5" /><span className="sr-only">Toggle navigation menu</span></SheetTrigger>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="shrink-0 md:hidden">
+                  <Menu className="size-5" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
                   <a

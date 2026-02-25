@@ -14,7 +14,7 @@ export function ContactSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const targetEmail = 'hello@hurevo.com'; // You can change this to your desired email
+    const targetEmail = 'hello@hurevo.cloud'; // You can change this to your desired email
     const subject = encodeURIComponent(`New Project Inquiry from ${name}`);
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\n\nProject Description:\n${description}`
