@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
 import GlowingBorderButton from '../glowing-border-button';
 

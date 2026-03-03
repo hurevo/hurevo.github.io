@@ -1,60 +1,80 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-// @ts-ignore
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Code, Workflow, Bot, RefreshCw, ArrowRight } from 'lucide-react';
+// @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
 
 export function ServicesSection() {
+  const scrollToContact = () => {
+    document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const services = [
     {
+      id: 'custom-software',
       title: m.service1Title(),
-      priceParams: m.service1Price(),
       description: m.service1Desc(),
-      icon: (
-        <svg className="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      )
+      highlight: m.service1Highlight(),
+      icon: <Code className="w-8 h-8" />,
     },
     {
+      id: 'automation',
       title: m.service2Title(),
-      priceParams: m.service2Price(),
       description: m.service2Desc(),
-      icon: (
-        <svg className="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      )
+      highlight: m.service2Highlight(),
+      icon: <Workflow className="w-8 h-8" />,
     },
     {
+      id: 'ai-solutions',
       title: m.service3Title(),
-      priceParams: m.service3Price(),
       description: m.service3Desc(),
-      icon: (
-        <svg className="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-      )
+      highlight: m.service3Highlight(),
+      icon: <Bot className="w-8 h-8" />,
+    },
+    {
+      id: 'legacy-modernization',
+      title: m.service4Title(),
+      description: m.service4Desc(),
+      highlight: m.service4Highlight(),
+      icon: <RefreshCw className="w-8 h-8" />,
     },
   ];
 
   return (
-    <section id="services-section" className="w-full py-16 px-4 max-w-6xl mx-auto">
-      <div className="text-center mb-12">
+    <section id="services-section" className="w-full py-20 px-4 max-w-6xl mx-auto">
+      <div className="text-center mb-14">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">{m.servicesHeader()}</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{m.servicesSubheader()}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <Card key={index} className="border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all hover:shadow-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <Card
+            key={service.id}
+            className="border-border/50 bg-card/50 backdrop-blur-sm hover:border-primary/50 transition-all hover:shadow-lg group cursor-pointer"
+            onClick={scrollToContact}
+          >
             <CardHeader>
-              {service.icon}
-              <CardTitle className="text-2xl">{service.title}</CardTitle>
-              <CardDescription className="text-primary font-medium">{service.priceParams}</CardDescription>
+              <div className="flex items-center gap-4 mb-2">
+                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
+                  {service.icon}
+                </div>
+                <CardTitle className="text-xl">{service.title}</CardTitle>
+              </div>
+              <CardDescription className="text-base leading-relaxed">
+                {service.description}
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">{service.description}</p>
+              <Badge variant="secondary" className="text-sm font-medium">
+                {service.highlight}
+              </Badge>
             </CardContent>
+            <CardFooter>
+              <span className="text-sm font-medium text-primary flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                {m.servicesCTA()} <ArrowRight className="w-4 h-4" />
+              </span>
+            </CardFooter>
           </Card>
         ))}
       </div>

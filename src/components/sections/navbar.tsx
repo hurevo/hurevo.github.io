@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/navbar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import HurevoLogo from "@/components/logos/hurevo";
+// @ts-expect-error - paraglide messages import
+import * as m from '@/paraglide/messages';
 
 interface NavbarLink {
     text: string;
@@ -42,23 +44,24 @@ export default function NavbarSection({
     logo = <HurevoLogo />,
     name = "Hurevo",
     homeUrl = "/#",
-    mobileLinks = [
-        { text: "Services", href: "/#services-section" },
-        { text: "Process", href: "/#process-section" },
-        { text: "Portfolio", href: "/#portfolio-section" },
-    ],
-    actions = [
+    className,
+}: NavbarProps) {
+    const navLinks: NavbarLink[] = [
+        { text: m.navServices(), href: "/#services-section" },
+        { text: m.navProcess(), href: "/#process-section" },
+        { text: m.navIndustries(), href: "/#industry-section" },
+        { text: m.navPortfolio(), href: "/#portfolio-section" },
+    ];
+
+    const actions: NavbarActionProps[] = [
         {
-            text: "Get Started",
+            text: m.navCTA(),
             href: "/#contact-section",
             isButton: true,
             variant: "default",
         },
-    ],
-    showNavigation = true,
-    customNavigation,
-    className,
-}: NavbarProps) {
+    ];
+
     return (
         <header className={cn("sticky top-0 z-50 pt-4 px-4", className)}>
             <div className="max-w-6xl relative mx-auto bg-background/60 backdrop-blur-md rounded-full px-5">
@@ -71,27 +74,23 @@ export default function NavbarSection({
                             {logo}
                             {name}
                         </a>
-                        {showNavigation && (
-                            customNavigation || (
-                                <nav className="hidden md:flex gap-8 ml-8 items-center">
-                                    {mobileLinks.map((link, idx) => (
-                                        <a
-                                            key={idx}
-                                            href={link.href}
-                                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                                        >
-                                            {link.text}
-                                        </a>
-                                    ))}
-                                </nav>
-                            )
-                        )}
+                        <nav className="hidden md:flex gap-8 ml-8 items-center">
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                >
+                                    {link.text}
+                                </a>
+                            ))}
+                        </nav>
                     </NavbarLeft>
                     <NavbarRight>
-                        {actions.map((action, index) =>
+                        {actions.map((action) =>
                             action.isButton ? (
                                 <Button
-                                    key={index}
+                                    key={action.href}
                                     variant={action.variant || "default"}
                                     onClick={() => { window.location.href = action.href; }}
                                 >
@@ -101,7 +100,7 @@ export default function NavbarSection({
                                 </Button>
                             ) : (
                                 <a
-                                    key={index}
+                                    key={action.href}
                                     href={action.href}
                                     className="hidden text-sm md:block"
                                 >
@@ -129,9 +128,9 @@ export default function NavbarSection({
                                         {logo}
                                         <span>{name}</span>
                                     </a>
-                                    {mobileLinks.map((link, index) => (
+                                    {navLinks.map((link) => (
                                         <a
-                                            key={index}
+                                            key={link.href}
                                             href={link.href}
                                             className="text-muted-foreground hover:text-foreground"
                                         >
