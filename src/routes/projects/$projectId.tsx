@@ -1,5 +1,11 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import projectsData from '@/data/projects.json';
+import enProjects from '@/data/projects/en.json';
+import idProjects from '@/data/projects/id.json';
+// @ts-expect-error - paraglide messages import
+import * as m from '@/paraglide/messages';
+// @ts-ignore
+import { getLocale, localizeHref } from '@/paraglide/runtime';
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -11,16 +17,46 @@ export const Route = createFileRoute('/projects/$projectId')({
     component: ProjectDetail,
 });
 
+interface ProjectContent {
+    overview: string;
+    coreValue: { title: string; description: string };
+    features: { title: string; description: string }[];
+    architecture: { title: string; description: string }[];
+    deployment: string;
+}
+
+interface LocalizedProject {
+    id: string;
+    title: string;
+    description: string;
+    imageUrl: string;
+    tags: string[];
+    link: string;
+    content: ProjectContent;
+}
+
+const localizedProjectsMap: Record<string, LocalizedProject[]> = {
+    en: enProjects as LocalizedProject[],
+    id: idProjects as LocalizedProject[],
+};
+
 function ProjectDetail() {
     const { projectId } = Route.useParams();
-    const project = projectsData.find((p) => p.id === projectId);
+    const locale = getLocale() as string;
 
-    if (!project) {
+    // Base metadata (locale-invariant: imageUrl, link)
+    const baseMeta = projectsData.find((p) => p.id === projectId);
+
+    // Localized content
+    const projects = localizedProjectsMap[locale] ?? localizedProjectsMap['en'];
+    const project = projects.find((p) => p.id === projectId);
+
+    if (!baseMeta || !project) {
         return (
             <div className="container mx-auto py-32 px-4 text-center space-y-4">
-                <h1 className="text-4xl font-bold">Project not found</h1>
-                <p className="text-muted-foreground">The project you are looking for does not exist.</p>
-                <Link to="/" className="text-primary hover:underline">Return to Home</Link>
+                <h1 className="text-4xl font-bold">{m.projectNotFoundTitle()}</h1>
+                <p className="text-muted-foreground">{m.projectNotFoundDesc()}</p>
+                <Link to="/" className="text-primary hover:underline">{m.projectNotFoundBack()}</Link>
             </div>
         );
     }
@@ -83,7 +119,7 @@ function ProjectDetail() {
                 <div className="lg:col-span-8 space-y-16">
                     {/* Overview */}
                     <motion.section variants={itemVariants} className="space-y-6">
-                        <h2 className="text-3xl font-semibold tracking-tight">Overview</h2>
+                        <h2 className="text-3xl font-semibold tracking-tight">{m.projectSectionOverview()}</h2>
                         <p className="text-lg leading-relaxed text-foreground/80 md:text-xl font-light">{content.overview}</p>
                     </motion.section>
 
@@ -102,9 +138,9 @@ function ProjectDetail() {
 
                     {/* Features Grid */}
                     <motion.section variants={itemVariants} className="space-y-8">
-                        <h2 className="text-3xl font-semibold tracking-tight">Key Modules and Features</h2>
+                        <h2 className="text-3xl font-semibold tracking-tight">{m.projectSectionFeatures()}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {content.features.map((feature: any, idx: number) => (
+                            {content.features.map((feature, idx) => (
                                 <motion.div key={feature.title} variants={itemVariants} custom={idx}>
                                     <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 hover:border-primary/30">
                                         <CardHeader className="pb-2">
@@ -124,9 +160,9 @@ function ProjectDetail() {
                 <div className="lg:col-span-4 space-y-12">
                     {/* Technical Architecture */}
                     <motion.section variants={itemVariants} className="space-y-6 p-8 bg-muted/30 rounded-3xl border border-border/50 backdrop-blur-md">
-                        <h2 className="text-2xl font-semibold tracking-tight">Technical details</h2>
+                        <h2 className="text-2xl font-semibold tracking-tight">{m.projectSectionTechnical()}</h2>
                         <Accordion className="w-full">
-                            {content.architecture.map((tech: any, idx: number) => (
+                            {content.architecture.map((tech, idx) => (
                                 <AccordionItem key={tech.title} value={`item-${idx}`}>
                                     <AccordionTrigger className="text-left text-lg font-medium hover:text-primary transition-colors">
                                         {tech.title}
@@ -141,7 +177,7 @@ function ProjectDetail() {
 
                     {/* Deployment */}
                     <motion.section variants={itemVariants} className="space-y-6 p-8 bg-muted/30 rounded-3xl border border-border/50 backdrop-blur-md">
-                        <h2 className="text-2xl font-semibold tracking-tight">Deployment & Licensing</h2>
+                        <h2 className="text-2xl font-semibold tracking-tight">{m.projectSectionDeployment()}</h2>
                         <p className="text-base leading-relaxed text-foreground/70">{content.deployment}</p>
                     </motion.section>
                 </div>
@@ -149,11 +185,11 @@ function ProjectDetail() {
 
             {/* Call to Action */}
             <motion.section variants={itemVariants} className="py-24 border-t border-border mt-24 text-center space-y-8 max-w-2xl mx-auto flex flex-col items-center">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Build your next enterprise solution <span className="text-primary italic">with us</span></h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">Let's discuss how we can build a scalable and secure platform like {project.title} tailored for your specific business needs.</p>
-                <a href="#contact-section">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">{m.projectCtaTitle()}</h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">{m.projectCtaDesc({ projectTitle: project.title })}</p>
+                <a href={localizeHref("/#contact-section")}>
                     <GlowingBorderButton className="mt-8">
-                        Get in Touch
+                        {m.projectCtaButton()}
                     </GlowingBorderButton>
                 </a>
             </motion.section>

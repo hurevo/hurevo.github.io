@@ -12,8 +12,11 @@ import {
 } from "@/components/ui/navbar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import HurevoLogo from "@/components/logos/hurevo";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
+// @ts-ignore
+import { localizeHref } from '@/paraglide/runtime';
 
 interface NavbarLink {
     text: string;
@@ -43,20 +46,20 @@ interface NavbarProps {
 export default function NavbarSection({
     logo = <HurevoLogo />,
     name = "Hurevo",
-    homeUrl = "/#",
+    homeUrl = "/",
     className,
 }: NavbarProps) {
     const navLinks: NavbarLink[] = [
-        { text: m.navServices(), href: "/#services-section" },
-        { text: m.navProcess(), href: "/#process-section" },
-        { text: m.navIndustries(), href: "/#industry-section" },
-        { text: m.navPortfolio(), href: "/#portfolio-section" },
+        { text: m.navServices(), href: localizeHref("/#services-section") },
+        { text: m.navProcess(), href: localizeHref("/#process-section") },
+        { text: m.navIndustries(), href: localizeHref("/#industry-section") },
+        { text: m.navPortfolio(), href: localizeHref("/#portfolio-section") },
     ];
 
     const actions: NavbarActionProps[] = [
         {
             text: m.navCTA(),
-            href: "/#contact-section",
+            href: localizeHref("/#contact-section"),
             isButton: true,
             variant: "default",
         },
@@ -68,7 +71,7 @@ export default function NavbarSection({
                 <NavbarComponent>
                     <NavbarLeft>
                         <a
-                            href={homeUrl}
+                            href={localizeHref(homeUrl)}
                             className="flex items-center gap-2 text-xl font-bold mr-6"
                         >
                             {logo}
@@ -92,7 +95,7 @@ export default function NavbarSection({
                                 <Button
                                     key={action.href}
                                     variant={action.variant || "default"}
-                                    onClick={() => { window.location.href = action.href; }}
+                                    onClick={() => { window.location.href = localizeHref(action.href); }}
                                 >
                                     {action.icon}
                                     {action.text}
@@ -108,6 +111,7 @@ export default function NavbarSection({
                                 </a>
                             ),
                         )}
+                        <LanguageSwitcher className="hidden md:flex ml-2" />
                         <Sheet>
                             <SheetTrigger asChild>
                                 <Button
@@ -116,18 +120,21 @@ export default function NavbarSection({
                                     className="shrink-0 md:hidden"
                                 >
                                     <Menu className="size-5" />
-                                    <span className="sr-only">Toggle navigation menu</span>
+                                    <span className="sr-only">{m.navMenuToggle()}</span>
                                 </Button>
                             </SheetTrigger>
                             <SheetContent side="right">
                                 <nav className="grid gap-6 text-lg font-medium">
-                                    <a
-                                        href={homeUrl}
-                                        className="flex items-center gap-2 text-xl font-bold"
-                                    >
-                                        {logo}
-                                        <span>{name}</span>
-                                    </a>
+                                    <div className="flex items-center justify-between">
+                                        <a
+                                            href={localizeHref(homeUrl)}
+                                            className="flex items-center gap-2 text-xl font-bold"
+                                        >
+                                            {logo}
+                                            <span>{name}</span>
+                                        </a>
+                                        <LanguageSwitcher />
+                                    </div>
                                     {navLinks.map((link) => (
                                         <a
                                             key={link.href}

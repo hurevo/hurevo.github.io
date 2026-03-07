@@ -107,10 +107,28 @@
   "navIndustries": "Industries",
   "navPortfolio": "Portfolio",
   "navCTA": "Get Started",
+  "navMenuToggle": "Toggle navigation menu",
 
   "footerEmail": "hello@hurevo.cloud",
   "footerLinkedIn": "LinkedIn",
   "footerServices": "Services",
   "footerTagline": "Made in Jakarta | Serving Clients Globally",
-  "footerCopyright": "Hurevo. All rights reserved."
+  "footerCopyright": "Hurevo. All rights reserved.",
+
+  "seoDefaultTitle": "Hurevo AI-Powered Development",
+  "seoDefaultDescription": "Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations.",
+
+  "projectCardFeaturedBadge": "Featured",
+  "projectCardViewButton": "View Project",
+
+  "projectNotFoundTitle": "Project not found",
+  "projectNotFoundDesc": "The project you are looking for does not exist.",
+  "projectNotFoundBack": "Return to Home",
+  "projectSectionOverview": "Overview",
+  "projectSectionFeatures": "Key Modules and Features",
+  "projectSectionTechnical": "Technical Details",
+  "projectSectionDeployment": "Deployment & Licensing",
+  "projectCtaTitle": "Build your next enterprise solution with us",
+  "projectCtaDesc": "Let's discuss how we can build a scalable and secure platform like {projectTitle} tailored for your specific business needs.",
+  "projectCtaButton": "Get in Touch"
 }

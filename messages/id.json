@@ -107,10 +107,28 @@
   "navIndustries": "Industri",
   "navPortfolio": "Portofolio",
   "navCTA": "Mulai Sekarang",
+  "navMenuToggle": "Buka menu navigasi",
 
   "footerEmail": "hello@hurevo.cloud",
   "footerLinkedIn": "LinkedIn",
   "footerServices": "Layanan",
   "footerTagline": "Dibuat di Jakarta | Melayani Klien Secara Global",
-  "footerCopyright": "Hurevo. Hak cipta dilindungi."
+  "footerCopyright": "Hurevo. Hak cipta dilindungi.",
+
+  "seoDefaultTitle": "Hurevo Pengembangan Bertenaga AI",
+  "seoDefaultDescription": "Hurevo membantu bisnis menyederhanakan operasi dengan solusi digital hemat biaya, pengembangan berbasis AI, otomasi, dan integrasi.",
+
+  "projectCardFeaturedBadge": "Unggulan",
+  "projectCardViewButton": "Lihat Proyek",
+
+  "projectNotFoundTitle": "Proyek tidak ditemukan",
+  "projectNotFoundDesc": "Proyek yang Anda cari tidak ditemukan.",
+  "projectNotFoundBack": "Kembali ke Beranda",
+  "projectSectionOverview": "Gambaran Umum",
+  "projectSectionFeatures": "Modul dan Fitur Utama",
+  "projectSectionTechnical": "Detail Teknis",
+  "projectSectionDeployment": "Deployment & Lisensi",
+  "projectCtaTitle": "Bangun solusi enterprise berikutnya bersama kami",
+  "projectCtaDesc": "Mari diskusikan bagaimana kami dapat membangun platform yang skalabel dan aman seperti {projectTitle} yang disesuaikan dengan kebutuhan bisnis Anda.",
+  "projectCtaButton": "Hubungi Kami"
 }

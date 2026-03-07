@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async';
+// @ts-expect-error - paraglide messages import
+import * as m from '@/paraglide/messages';
 
 interface SEOMetaProps {
     title?: string;
@@ -9,33 +11,36 @@ interface SEOMetaProps {
 }
 
 export function SEOMeta({
-    title = "Hurevo AI-Powered Development",
-    description = "Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations.",
+    title,
+    description,
     image = "https://hurevo.cloud/og-image.png",
     url = "https://hurevo.cloud/",
     type = "website",
 }: SEOMetaProps) {
-    const fullTitle = title === "Hurevo AI-Powered Development" ? title : `${title} | Hurevo`;
+    const defaultTitle = m.seoDefaultTitle() as string;
+    const resolvedTitle = title ?? defaultTitle;
+    const resolvedDescription = description ?? (m.seoDefaultDescription() as string);
+    const fullTitle = resolvedTitle === defaultTitle ? resolvedTitle : `${resolvedTitle} | Hurevo`;
 
     return (
         <Helmet>
             {/* Primary Meta Tags */}
             <title>{fullTitle}</title>
             <meta name="title" content={fullTitle} />
-            <meta name="description" content={description} />
+            <meta name="description" content={resolvedDescription} />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={type} />
             <meta property="og:url" content={url} />
             <meta property="og:title" content={fullTitle} />
-            <meta property="og:description" content={description} />
+            <meta property="og:description" content={resolvedDescription} />
             <meta property="og:image" content={image} />
 
             {/* Twitter */}
             <meta property="twitter:card" content="summary_large_image" />
             <meta property="twitter:url" content={url} />
             <meta property="twitter:title" content={fullTitle} />
-            <meta property="twitter:description" content={description} />
+            <meta property="twitter:description" content={resolvedDescription} />
             <meta property="twitter:image" content={image} />
 
             {/* Canonical Link */}
