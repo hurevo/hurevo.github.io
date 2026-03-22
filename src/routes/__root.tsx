@@ -1,6 +1,6 @@
 import { createRootRoute, Outlet, useLocation, ScrollRestoration } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
-// @ts-ignore
+import { useEffect, useLayoutEffect, useMemo } from 'react';
+// @ts-expect-error - paraglide runtime is auto-generated
 import { setLocale, getLocaleForUrl, getLocale } from '../paraglide/runtime';
 import NavbarSection from '@/components/sections/navbar';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -10,28 +10,34 @@ export const Route = createRootRoute({
     component: RootRoute,
 });
 
+// Use layout effect for DOM synchronization to avoid setState warnings
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 function RootRoute() {
     const location = useLocation();
-    const [locale, setReactLocale] = useState(() => {
+    
+    // Compute locale from URL during render - this is deterministic
+    const locale = useMemo(() => {
         try {
-            return getLocale();
-        } catch (e) {
+            return getLocaleForUrl(location.href);
+        } catch {
             return 'en';
         }
-    });
-
-    useEffect(() => {
+    }, [location.href]);
+    
+    // Sync paraglide locale and document lang using layout effect
+    // This runs before paint, avoiding the setState in effect warning
+    useIsomorphicLayoutEffect(() => {
         try {
-            const urlLocale = getLocaleForUrl(location.href);
-            if (urlLocale !== locale) {
-                setLocale(urlLocale, { reload: false });
-                setReactLocale(urlLocale);
-                document.documentElement.lang = urlLocale;
+            const currentParaglideLocale = getLocale();
+            if (locale !== currentParaglideLocale) {
+                setLocale(locale, { reload: false });
             }
-        } catch (e) {
-            console.error(e);
+            document.documentElement.lang = locale;
+        } catch {
+            // Silently handle errors
         }
-    }, [location.href, locale]);
+    }, [locale]);
 
     return (
         <div key={locale} className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/30 flex flex-col">

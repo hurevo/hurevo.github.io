@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface GlowingBorderButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string; // Explicitly kept if needed, though extended types usually cover it
+  className?: string;
   children: React.ReactNode;
 }
 
@@ -17,23 +17,24 @@ const GlowingBorderButton = ({
   return (
     <button
       className={cn(
-        "glowing-border-button group relative h-[60px] px-4 cursor-pointer border-0 bg-transparent p-0 text-[20px] font-bold outline-none",
+        "glowing-border-button group relative h-14 md:h-16 px-6 cursor-pointer border-0 bg-transparent p-0 text-base md:text-lg font-semibold outline-none tracking-wide",
         className
       )}
       {...props}
     >
       <div
         className={cn(
-          "relative h-full w-full overflow-hidden rounded-[18px] p-[2px] transition-all duration-300 ease-in-out",
-          "dark:bg-zinc-800 bg-zinc-200"
+          "relative h-full w-full overflow-hidden rounded-2xl p-[2px] transition-all duration-300 ease-in-out",
+          "bg-gradient-to-r from-zinc-300 via-zinc-200 to-zinc-300",
+          "dark:from-zinc-700 dark:via-zinc-800 dark:to-zinc-700"
         )}
       >
         {/* Rotating Border Beam */}
-        <div className="absolute inset-0 overflow-hidden rounded-[18px]">
+        <div className="absolute inset-0 overflow-hidden rounded-2xl">
           <div
             className={cn(
-              "absolute left-1/2 top-1/2 h-[500%] w-[80px] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite]",
-              "[background:linear-gradient(to_right,transparent_20%,#50C878_50%,#50C878_60%,transparent_80%)]",
+              "absolute left-1/2 top-1/2 h-[500%] w-[100px] -translate-x-1/2 -translate-y-1/2 animate-[spin_3s_linear_infinite]",
+              "bg-gradient-to-r from-transparent via-primary to-transparent",
               "blur-[2px]"
             )}
           ></div>
@@ -42,10 +43,11 @@ const GlowingBorderButton = ({
         {/* Inner Content */}
         <div
           className={cn(
-            "content relative z-10 flex h-full w-full items-center justify-center gap-2 rounded-[16px] transition-all duration-300 ease-in-out bg-white dark:bg-black px-11"
+            "content relative z-10 flex h-full w-full items-center justify-center gap-3 rounded-[14px] transition-all duration-300 ease-in-out",
+            "bg-background px-8"
           )}
         >
-          <span className="dark:text-white text-black transition-colors duration-300">
+          <span className="text-foreground transition-colors duration-300 whitespace-nowrap">
             {children}
           </span>
         </div>

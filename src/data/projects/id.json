@@ -3,14 +3,15 @@
     "id": "hurevo-erp",
     "title": "Hurevo ERP",
     "description": "Sistem Enterprise Resource Planning yang dirancang khusus untuk UMKM.",
-    "imageUrl": "/images/projects/hurevo-erp/screenshot_erp.hurevo.cloud.png",
+    "imageUrl": "/images/projects/hurevo-erp/preview.png",
+    "category": "Enterprise Software",
     "tags": [
       "Enterprise Resource Planning",
       "Inventory Management",
       "CRM",
       "Accounting"
     ],
-    "link": "https://erp.hurevo.cloud",
+    "link": "https://erp.hurevo.cognerest.com",
     "content": {
       "overview": "Hurevo ERP adalah sistem Enterprise Resource Planning (ERP) single-tenant yang komprehensif, dirancang khusus untuk usaha mikro, kecil, dan menengah (UMKM). Sistem ini memberikan gambaran menyeluruh tentang fitur inti dan kemampuan teknis yang menjadikan Hurevo ERP solusi ideal untuk ditampilkan dalam portofolio atau ditawarkan kepada calon klien.",
       "coreValue": {
@@ -70,6 +71,71 @@
         }
       ],
       "deployment": "Hurevo ERP beroperasi dengan model distribusi berbasis lisensi. Arsitektur single-tenant yang independen memungkinkan Anda men-deploy instance software yang sepenuhnya terisolasi untuk setiap klien. Pendekatan ini menjamin kepemilikan dan keamanan data yang penuh, sekaligus mempertahankan produk inti yang terstandarisasi dan mudah diupgrade."
+    }
+  },
+  {
+    "id": "sixeight",
+    "title": "SixEight",
+    "description": "Platform studio 3D Models & Design untuk komisi B2C/B2B internasional.",
+    "imageUrl": "/images/projects/sixeight/preview.png",
+    "category": "Creative Platform",
+    "tags": ["3D Design", "WebGL", "Client Portal", "Ticketing System"],
+    "link": "https://sixeight-platform.dev.hurevo.cognerest.com",
+    "content": {
+      "overview": "SixEight adalah platform studio 3D Models & Design yang dibangun untuk pasar B2C dan B2B internasional. Platform ini menggantikan alur kerja freelance yang terfragmentasi dengan portal klien terpusat untuk komisi model 3D, yang dilengkapi dengan showcase 3D interaktif dan sistem tiket yang cerdas.",
+      "coreValue": {
+        "title": "Alur Kerja Kreatif yang Efisien",
+        "description": "SixEight menghilangkan kekacauan manajemen komisi berbasis email. Sistem tiket terstruktur platform ini menangkap semua spesifikasi teknis di awal—dari jumlah polygon hingga format deliverable—mengurangi scope creep dan memastikan setiap proyek dimulai dengan brief yang terstruktur sempurna dan risiko yang diminimalkan."
+      },
+      "features": [
+        {
+          "title": "Portofolio 3D Interaktif",
+          "description": "Menampilkan model 3D langsung di browser menggunakan teknologi WebGL. Klien dapat melihat model dari berbagai sudut, memeriksa detail, dan merasakan karya studio dalam 3D yang imersif sebelum memesan."
+        },
+        {
+          "title": "Sistem Tiket Cerdas",
+          "description": "Formulir pengambilan proyek dinamis dengan logika kondisional berdasarkan tipe proyek (Karakter, Hard Surface, ArchViz, dll.). Menangkap semua spesifikasi teknis termasuk budget polygon, resolusi tekstur, workflow PBR, dan kebutuhan rigging di awal."
+        },
+        {
+          "title": "Portal Klien & Dashboard",
+          "description": "Klien B2C dan B2B mengakses portal khusus untuk melacak status proyek, berkomunikasi dengan artist, dan mengunduh deliverable. Mengurangi thread email hingga 40% dan menghilangkan permintaan update status."
+        },
+        {
+          "title": "Sistem Feedback Spasial",
+          "description": "Klien dapat meninggalkan anotasi langsung pada model 3D di browser. Komentar diancang ke koordinat geometri spesifik, mengubah feedback subjektif menjadi instruksi yang presisi dan dapat ditindaklanjuti."
+        },
+        {
+          "title": "Manajemen File Aman",
+          "description": "Portal upload terlindungi untuk concept art dan material referensi. Deliverable dikunci hingga persetujuan akhir, dengan URL download berbatas waktu dan validasi tipe file yang ketat."
+        },
+        {
+          "title": "Dukungan Multi-Pasar",
+          "description": "Dibangun untuk klien internasional dengan dukungan untuk komisi individu B2C dan akun enterprise B2B dengan kebutuhan khusus dan workflow NDA."
+        }
+      ],
+      "architecture": [
+        {
+          "title": "Framework",
+          "description": "Dibangun di atas Laravel dengan prinsip Domain-Driven Design. Menggunakan middleware RBAC untuk menegakkan kontrol akses ketat yang membedakan antara klien B2C, akun B2B, artist internal, dan administrator."
+        },
+        {
+          "title": "Stack Frontend",
+          "description": "Menggunakan InertiaJS dengan React dan TailwindCSS untuk pengalaman SPA yang mulus. Viewer 3D dibangun dengan React Three Fiber untuk rendering WebGL yang dioptimalkan dari aset GLB/glTF dengan lazy loading."
+        },
+        {
+          "title": "Integrasi 3D Viewer",
+          "description": "Implementasi WebGL kustom menggunakan Three.js via React Three Fiber. Mendukung multiple format 3D dan memungkinkan feedback spasial dalam konteks dengan fitur anotasi yang diancang ke koordinat geometri."
+        },
+        {
+          "title": "Database & State Management",
+          "description": "PostgreSQL dengan relasi polimorfik untuk tiket, file, dan komunikasi. Implementasi state machine melacak proyek melalui tahapan workflow programatis dengan notifikasi otomatis."
+        },
+        {
+          "title": "Optimasi Aset",
+          "description": "Workflow kompresi GLB otomatis, scaling tekstur, dan decimation polygon. Memastikan model web-facing memuat dengan cepat sambil mempertahankan kualitas visual untuk presentasi portofolio."
+        }
+      ],
+      "deployment": "SixEight beroperasi sebagai platform branded khusus untuk studio. Arsitektur berbasis Laravel mendukung deployment single-tenant dengan isolasi data yang lengkap. Platform ini dirancang untuk diskalakan dari operasi artist individual hingga studio multi-artist dengan kemampuan DAM (Digital Asset Management) yang lebih maju di fase mendatang."
     }
   }
 ]

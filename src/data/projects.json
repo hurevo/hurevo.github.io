@@ -3,73 +3,23 @@
     "id": "hurevo-erp",
     "title": "Hurevo ERP",
     "description": "Enterprise Resource Planning system designed specifically for MSMEs.",
-    "imageUrl": "/images/projects/hurevo-erp/screenshot_erp.hurevo.cloud.png",
+    "imageUrl": "/images/projects/hurevo-erp/preview.png",
+    "category": "Enterprise Software",
     "tags": [
       "Enterprise Resource Planning",
       "Inventory Management",
       "CRM",
       "Accounting"
     ],
-    "link": "https://erp.hurevo.cloud",
-    "content": {
-      "overview": "Hurevo ERP is a comprehensive, single-tenant Enterprise Resource Planning (ERP) system designed specifically for micro, small, and medium enterprises (MSMEs). This system provides a high-level overview of the core features and technical capabilities that make Hurevo ERP an ideal solution to showcase in portfolios or offer to prospective clients.",
-      "coreValue": {
-        "title": "Bankability",
-        "description": "The foundation of Hurevo ERP is Bankability (Kesiapan Modal). Every financial transaction across the system automatically generates SAK EMKM-compliant double-entry journal entries. This automation ensures business owners always maintain audit-ready financial records, which simplifies tax preparation and increases their eligibility for external business funding."
-      },
-      "features": [
-        {
-          "title": "Accounting",
-          "description": "Automates general ledger operations, manages chart of accounts, and ensures strict financial compliance."
-        },
-        {
-          "title": "Customer Relationship Management (CRM)",
-          "description": "Manages customer data, sales pipelines, and communication history to improve client retention."
-        },
-        {
-          "title": "Supply Chain Management (SCM) and Inventory",
-          "description": "Tracks stock levels in real-time, handles product variations, and optimizes procurement workflows."
-        },
-        {
-          "title": "Human Resources Information System (HRIS)",
-          "description": "Streamlines employee data management, attendance tracking, and organizational structures."
-        },
-        {
-          "title": "Point of Sale (POS)",
-          "description": "Provides an offline-first companion mobile application that synchronizes transactions and inventory data seamlessly with the main ERP API."
-        },
-        {
-          "title": "Payment Gateway",
-          "description": "Integrates secure processing for digital transactions, invoicing, and automated payment reconciliation."
-        },
-        {
-          "title": "Financial Reports",
-          "description": "Delivers real-time insights through automated, comprehensive reporting dashboards and PDF generation."
-        }
-      ],
-      "architecture": [
-        {
-          "title": "Framework",
-          "description": "Built on Laravel 12.x utilizing strict typing and a dedicated service layer. This ensures business logic remains separated from controllers."
-        },
-        {
-          "title": "Administration panel",
-          "description": "Uses Filament v4 combined with Livewire and Flux to provide a highly reactive, responsive user interface."
-        },
-        {
-          "title": "Database architecture",
-          "description": "Uses PostgreSQL with UUID primary keys. The single-tenant deployment model ensures complete data isolation and privacy for each organization."
-        },
-        {
-          "title": "API design",
-          "description": "Exposes a secure REST API via Laravel Sanctum, providing the backend infrastructure for the offline-first mobile POS application."
-        },
-        {
-          "title": "Performance",
-          "description": "Runs on Laravel Octane to maximize application speed and handle concurrent requests efficiently."
-        }
-      ],
-      "deployment": "Hurevo ERP operates on a license-based distribution model. The independent, single-tenant architecture lets you deploy completely isolated software instances for each client. This approach guarantees complete data ownership and security while maintaining a standardized, easily upgradable core product."
-    }
+    "link": "https://erp.hurevo.cognerest.com"
+  },
+  {
+    "id": "sixeight",
+    "title": "SixEight",
+    "description": "3D Models & Design Studio platform for international B2C/B2B commissions.",
+    "imageUrl": "/images/projects/sixeight/preview.png",
+    "category": "Creative Platform",
+    "tags": ["3D Design", "WebGL", "Client Portal", "Ticketing System"],
+    "link": "https://sixeight-platform.dev.hurevo.cognerest.com"
   }
 ]

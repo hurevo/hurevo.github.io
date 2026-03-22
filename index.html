@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -14,31 +13,53 @@
     <!-- Primary Meta Tags -->
     <title>Hurevo AI-Powered Development</title>
     <meta name="title" content="Hurevo AI-Powered Development" />
-    <meta name="description"
-        content="Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations." />
-    <meta name="keywords"
-        content="Hurevo, Tech Consultant, AI Development, Automation, Business Integrations, Web App, Laravel" />
+    <meta
+      name="description"
+      content="Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations."
+    />
+    <meta
+      name="keywords"
+      content="Hurevo, Tech Consultant, AI Development, Automation, Business Integrations, Web App, Laravel"
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hurevo.cloud/" />
+    <meta property="og:url" content="https://hurevo.cognerest.com/" />
     <meta property="og:title" content="Hurevo AI-Powered Development" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="id_ID" />
-    <link rel="alternate" hreflang="en" href="https://hurevo.cloud/" />
-    <link rel="alternate" hreflang="id" href="https://hurevo.cloud/id/" />
-    <link rel="alternate" hreflang="x-default" href="https://hurevo.cloud/" />
-    <meta property="og:description"
-        content="Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations." />
-    <meta property="og:image" content="https://hurevo.cloud/og-image.png" />
+    <link rel="alternate" hreflang="en" href="https://hurevo.cognerest.com/" />
+    <link
+      rel="alternate"
+      hreflang="id"
+      href="https://hurevo.cognerest.com/id/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://hurevo.cognerest.com/"
+    />
+    <meta
+      property="og:description"
+      content="Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations."
+    />
+    <meta
+      property="og:image"
+      content="https://hurevo.cognerest.com/og-image.png"
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://hurevo.cloud/" />
+    <meta property="twitter:url" content="https://hurevo.cognerest.com/" />
     <meta property="twitter:title" content="Hurevo AI-Powered Development" />
-    <meta property="twitter:description"
-        content="Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations." />
-    <meta property="twitter:image" content="https://hurevo.cloud/og-image.png" />
+    <meta
+      property="twitter:description"
+      content="Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations."
+    />
+    <meta
+      property="twitter:image"
+      content="https://hurevo.cognerest.com/og-image.png"
+    />
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -46,26 +67,43 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Hurevo",
-        "url": "https://hurevo.cloud",
-        "logo": "https://hurevo.cloud/apple-touch-icon.png",
+        "url": "https://hurevo.cognerest.com",
+        "logo": "https://hurevo.cognerest.com/apple-touch-icon.png",
         "description": "Hurevo helps businesses streamline operations with cost-effective digital solutions, AI-assisted development, automation, and integrations."
       }
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y73SEL7X3"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0Y73SEL7X3"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-0Y73SEL7X3');
+      gtag("config", "G-0Y73SEL7X3");
     </script>
-</head>
 
-<body class="scroll-smooth">
+    <!-- Theme initialization script to prevent flash -->
+    <script>
+      (function () {
+        const theme = localStorage.getItem("hurevo-theme") || "system";
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const resolvedTheme =
+          theme === "system" ? (systemDark ? "dark" : "light") : theme;
+        document.documentElement.classList.add(resolvedTheme);
+      })();
+    </script>
+  </head>
+
+  <body class="scroll-smooth">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-</body>
-
+  </body>
 </html>

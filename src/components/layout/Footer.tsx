@@ -1,20 +1,38 @@
+import React from 'react';
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
+// @ts-expect-error - paraglide runtime import
+import { localizeHref } from '@/paraglide/runtime';
 import HurevoLogo from '@/components/logos/hurevo';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 
-export function Footer() {
-    const serviceLinks = [
+interface LegalLink {
+    text: string;
+    href: string;
+}
+
+interface ServiceLink {
+    text: string;
+    href: string;
+}
+
+export function Footer(): React.JSX.Element {
+    const serviceLinks: ServiceLink[] = [
         { text: m.service1Title(), href: '/#services-section' },
         { text: m.service2Title(), href: '/#services-section' },
         { text: m.service3Title(), href: '/#services-section' },
         { text: m.service4Title(), href: '/#services-section' },
     ];
 
+    const legalLinks: LegalLink[] = [
+        { text: m.footerTermsOfService?.() ?? 'Terms of Service', href: localizeHref('/terms') },
+        { text: m.footerPrivacyPolicy?.() ?? 'Privacy Policy', href: localizeHref('/privacy') },
+    ];
+
     return (
         <footer className="w-full border-t border-border mt-16">
             <div className="max-w-6xl mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     {/* Brand */}
                     <div>
                         <a href="/#" className="flex items-center gap-2 text-lg font-bold mb-3">
@@ -59,6 +77,20 @@ export function Footer() {
                                     {m.footerEmail()}
                                 </a>
                             </li>
+                        </ul>
+                    </div>
+
+                    {/* Legal */}
+                    <div>
+                        <h4 className="text-sm font-semibold mb-3">{m.footerLegal?.() ?? 'Legal'}</h4>
+                        <ul className="space-y-2">
+                            {legalLinks.map((link) => (
+                                <li key={link.text}>
+                                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                                        {link.text}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

@@ -4,7 +4,8 @@ import { type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import {
     Navbar as NavbarComponent,
     NavbarLeft,
@@ -13,9 +14,10 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import HurevoLogo from "@/components/logos/hurevo";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { ThemeToggle } from "@/components/theme-toggle";
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
-// @ts-ignore
+// @ts-expect-error - paraglide runtime import
 import { localizeHref } from '@/paraglide/runtime';
 
 interface NavbarLink {
@@ -51,6 +53,7 @@ export default function NavbarSection({
 }: NavbarProps) {
     const navLinks: NavbarLink[] = [
         { text: m.navServices(), href: localizeHref("/#services-section") },
+        { text: m.navCloud(), href: localizeHref("/cloud") },
         { text: m.navProcess(), href: localizeHref("/#process-section") },
         { text: m.navIndustries(), href: localizeHref("/#industry-section") },
         { text: m.navPortfolio(), href: localizeHref("/#portfolio-section") },
@@ -111,6 +114,7 @@ export default function NavbarSection({
                                 </a>
                             ),
                         )}
+                        <ThemeToggle />
                         <LanguageSwitcher className="hidden md:flex ml-2" />
                         <Sheet>
                             <SheetTrigger asChild>
@@ -133,7 +137,10 @@ export default function NavbarSection({
                                             {logo}
                                             <span>{name}</span>
                                         </a>
-                                        <LanguageSwitcher />
+                                        <div className="flex items-center gap-2">
+                                            <ThemeToggle />
+                                            <LanguageSwitcher />
+                                        </div>
                                     </div>
                                     {navLinks.map((link) => (
                                         <a

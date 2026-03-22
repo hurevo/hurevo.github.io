@@ -3,16 +3,16 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { HelmetProvider } from 'react-helmet-async';
 import { routeTree } from './routeTree.gen';
+import { ThemeProvider } from './components/theme-provider';
 import './index.css';
 
-// @ts-ignore
+// @ts-expect-error - paraglide runtime import
 import { deLocalizeUrl, localizeUrl } from './paraglide/runtime';
 
 // Create a new router instance
 const router = createRouter({
     routeTree,
     // Add Paraglide URL rewriting for localized paths
-    // Using explicit localizer paths will configure the router correctly without the helper library overhead right now
     rewrite: {
         input: ({ url }) => deLocalizeUrl(url),
         output: ({ url }) => localizeUrl(url),
@@ -29,7 +29,9 @@ declare module '@tanstack/react-router' {
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <HelmetProvider>
-            <RouterProvider router={router} />
+            <ThemeProvider defaultTheme="system" storageKey="hurevo-theme">
+                <RouterProvider router={router} />
+            </ThemeProvider>
         </HelmetProvider>
     </StrictMode>
 );

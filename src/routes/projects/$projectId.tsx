@@ -4,14 +4,16 @@ import enProjects from '@/data/projects/en.json';
 import idProjects from '@/data/projects/id.json';
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
-// @ts-ignore
+// @ts-expect-error - paraglide runtime import
 import { getLocale, localizeHref } from '@/paraglide/runtime';
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import GlowingBorderButton from "@/components/glowing-border-button";
 import { SEOMeta } from "@/components/seo/SEOMeta";
 import { motion, type Variants } from "motion/react";
+import { ExternalLink } from "lucide-react";
 
 export const Route = createFileRoute('/projects/$projectId')({
     component: ProjectDetail,
@@ -63,6 +65,10 @@ function ProjectDetail() {
 
     const { content } = project;
 
+    // Check if project has external link
+    const isExternalLink = baseMeta?.link?.startsWith('http');
+    const externalLink = baseMeta?.link;
+
     // Animation variants
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
@@ -102,6 +108,28 @@ function ProjectDetail() {
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-linear-to-br from-foreground to-foreground/70 pb-2">{project.title}</h1>
                 <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">{project.description}</p>
+                
+                {/* External Link Button */}
+                {isExternalLink && externalLink && (
+                    <motion.div 
+                        variants={itemVariants}
+                        className="pt-4"
+                    >
+                        <a 
+                            href={externalLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <Button 
+                                size="lg" 
+                                className="gap-2"
+                            >
+                                Visit Live Site
+                                <ExternalLink className="h-4 w-4" />
+                            </Button>
+                        </a>
+                    </motion.div>
+                )}
             </motion.section>
 
             {/* Main image */}
