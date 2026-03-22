@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
-import CalBooking from "../cal-booking";
+import LazyCalBooking from "../lazy-cal-booking";
 // @ts-expect-error - paraglide messages import
 import * as m from "@/paraglide/messages";
 
@@ -127,7 +127,7 @@ export function ContactSection() {
         <div className="flex flex-col">
           <h3 className="text-2xl font-bold mb-6">{m.contactBookCall()}</h3>
           <div className="bg-card rounded-xl border border-border/50 overflow-hidden shadow-sm">
-            <CalBooking />
+            <LazyCalBooking />
           </div>
         </div>
       </div>

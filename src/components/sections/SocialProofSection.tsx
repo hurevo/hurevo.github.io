@@ -30,10 +30,10 @@ export function SocialProofSection() {
     { src: 'react.svg', name: 'React' },
     { src: 'typescript.svg', name: 'TypeScript' },
     { src: 'laravel.svg', name: 'Laravel' },
-    { src: 'claude.png', name: 'Claude AI' },
-    { src: 'php.png', name: 'PHP' },
-    { src: 'n8n.png', name: 'n8n' },
-    { src: 'langchain.png', name: 'LangChain' },
+    { src: 'claude.webp', name: 'Claude AI' },
+    { src: 'php.webp', name: 'PHP' },
+    { src: 'n8n.webp', name: 'n8n' },
+    { src: 'langchain.webp', name: 'LangChain' },
   ];
 
   return (
@@ -76,6 +76,7 @@ export function SocialProofSection() {
                   width={64} 
                   height={64}
                   className="h-12 w-12 md:h-16 md:w-16 object-contain"
+                  loading="lazy"
                 />
               </div>
             ))}

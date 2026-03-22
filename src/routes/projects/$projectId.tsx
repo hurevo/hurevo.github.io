@@ -139,6 +139,7 @@ function ProjectDetail() {
                     src={project.imageUrl}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    fetchPriority="high"
                 />
             </motion.section>
 

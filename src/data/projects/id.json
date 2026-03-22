@@ -3,7 +3,7 @@
     "id": "hurevo-erp",
     "title": "Hurevo ERP",
     "description": "Sistem Enterprise Resource Planning yang dirancang khusus untuk UMKM.",
-    "imageUrl": "/images/projects/hurevo-erp/preview.png",
+    "imageUrl": "/images/projects/hurevo-erp/preview.webp",
     "category": "Enterprise Software",
     "tags": [
       "Enterprise Resource Planning",
@@ -77,7 +77,7 @@
     "id": "sixeight",
     "title": "SixEight",
     "description": "Platform studio 3D Models & Design untuk komisi B2C/B2B internasional.",
-    "imageUrl": "/images/projects/sixeight/preview.png",
+    "imageUrl": "/images/projects/sixeight/preview.webp",
     "category": "Creative Platform",
     "tags": ["3D Design", "WebGL", "Client Portal", "Ticketing System"],
     "link": "https://sixeight-platform.dev.hurevo.cognerest.com",
