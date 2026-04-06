@@ -1,8 +1,7 @@
 import React from 'react';
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
-// @ts-expect-error - paraglide runtime import
-import { localizeHref } from '@/paraglide/runtime';
+import { localizeHref } from '@/lib/url';
 import HurevoLogo from '@/components/logos/hurevo';
 import { LanguageSwitcher } from '@/components/ui/language-switcher';
 
@@ -35,7 +34,7 @@ export function Footer(): React.JSX.Element {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     {/* Brand */}
                     <div>
-                        <a href="/#" className="flex items-center gap-2 text-lg font-bold mb-3">
+                        <a href={localizeHref("/")} className="flex items-center gap-2 text-lg font-bold mb-3">
                             <HurevoLogo />
                             Hurevo
                         </a>

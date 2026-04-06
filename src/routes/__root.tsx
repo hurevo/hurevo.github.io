@@ -5,6 +5,7 @@ import { setLocale, getLocaleForUrl, getLocale } from '../paraglide/runtime';
 import NavbarSection from '@/components/sections/navbar';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/layout/Footer';
+import { withoutBase } from '@/lib/url';
 
 export const Route = createRootRoute({
     component: RootRoute,
@@ -19,7 +20,8 @@ function RootRoute() {
     // Compute locale from URL during render - this is deterministic
     const locale = useMemo(() => {
         try {
-            return getLocaleForUrl(location.href);
+            const urlForLocale = withoutBase(location.href);
+            return getLocaleForUrl(urlForLocale);
         } catch {
             return 'en';
         }

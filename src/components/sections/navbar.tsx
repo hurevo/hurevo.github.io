@@ -17,8 +17,7 @@ import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
-// @ts-expect-error - paraglide runtime import
-import { localizeHref } from '@/paraglide/runtime';
+import { localizeHref } from '@/lib/url';
 
 interface NavbarLink {
     text: string;
@@ -48,7 +47,7 @@ interface NavbarProps {
 export default function NavbarSection({
     logo = <HurevoLogo />,
     name = "Hurevo",
-    homeUrl = "/",
+    homeUrl = localizeHref("/"),
     className,
 }: NavbarProps) {
     const navLinks: NavbarLink[] = [

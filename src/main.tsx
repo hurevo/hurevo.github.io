@@ -8,15 +8,17 @@ import './index.css';
 
 // @ts-expect-error - paraglide runtime import
 import { deLocalizeUrl, localizeUrl } from './paraglide/runtime';
+import { getBasePath } from './lib/url';
 
-// Create a new router instance
+const BASE_PATH = getBasePath();
+
 const router = createRouter({
     routeTree,
-    // Add Paraglide URL rewriting for localized paths
+    basepath: BASE_PATH || undefined,
     rewrite: {
         input: ({ url }) => deLocalizeUrl(url),
         output: ({ url }) => localizeUrl(url),
-    }
+    },
 });
 
 // Register the router instance for type safety

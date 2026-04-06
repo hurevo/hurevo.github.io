@@ -5,7 +5,8 @@ import idProjects from '@/data/projects/id.json';
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
 // @ts-expect-error - paraglide runtime import
-import { getLocale, localizeHref } from '@/paraglide/runtime';
+import { getLocale } from '@/paraglide/runtime';
+import { localizeHref } from '@/lib/url';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
