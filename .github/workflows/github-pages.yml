@@ -32,9 +32,9 @@ jobs:
         run: bun install
 
       - name: Build
-        run: VITE_BASE_PATH=/hurevo/ bun run build
+        run: VITE_BASE_PATH=/ bun run build
         env:
-          VITE_BASE_PATH: /hurevo/
+          VITE_BASE_PATH: /
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
