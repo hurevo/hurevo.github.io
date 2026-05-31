@@ -10,8 +10,7 @@
       "Inventory Management",
       "CRM",
       "Accounting"
-    ],
-    "link": "https://erp.hurevo.cognerest.com"
+    ]
   },
   {
     "id": "sixeight",
@@ -19,7 +18,6 @@
     "description": "3D Models & Design Studio platform for international B2C/B2B commissions.",
     "imageUrl": "/images/projects/sixeight/preview.webp",
     "category": "Creative Platform",
-    "tags": ["3D Design", "WebGL", "Client Portal", "Ticketing System"],
-    "link": "https://sixeight-platform.dev.hurevo.cognerest.com"
+    "tags": ["3D Design", "WebGL", "Client Portal", "Ticketing System"]
   }
 ]
