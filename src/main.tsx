@@ -15,6 +15,7 @@ const BASE_PATH = getBasePath();
 const router = createRouter({
     routeTree,
     basepath: BASE_PATH || undefined,
+    scrollRestoration: true,
     rewrite: {
         input: ({ url }) => deLocalizeUrl(url),
         output: ({ url }) => localizeUrl(url),

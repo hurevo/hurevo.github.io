@@ -26,3 +26,5 @@ dist-ssr
 # Tanstack
 src/routeTree.gen.ts
 .tanstack
+.vercel
+.env*.local

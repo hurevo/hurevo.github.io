@@ -1,44 +1,26 @@
-import { Target, Monitor, DollarSign, Eye, BadgeCheck, Handshake } from 'lucide-react';
+import { ClipboardList, Cpu, TrendingUp } from 'lucide-react';
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
 
 export function WhyHurevoSection() {
   const differentiators = [
     {
-      id: 'outcomes',
+      id: 'business-first',
       title: m.whyHurevo1Title(),
       description: m.whyHurevo1Desc(),
-      icon: <Target className="w-5 h-5" />,
+      icon: <ClipboardList className="w-5 h-5" />,
     },
     {
-      id: 'working-software',
+      id: 'consulting-execution',
       title: m.whyHurevo2Title(),
       description: m.whyHurevo2Desc(),
-      icon: <Monitor className="w-5 h-5" />,
+      icon: <Cpu className="w-5 h-5" />,
     },
     {
-      id: 'boutique-pricing',
+      id: 'practical',
       title: m.whyHurevo3Title(),
       description: m.whyHurevo3Desc(),
-      icon: <DollarSign className="w-5 h-5" />,
-    },
-    {
-      id: 'transparent',
-      title: m.whyHurevo4Title(),
-      description: m.whyHurevo4Desc(),
-      icon: <Eye className="w-5 h-5" />,
-    },
-    {
-      id: 'warranty',
-      title: m.whyHurevo5Title(),
-      description: m.whyHurevo5Desc(),
-      icon: <BadgeCheck className="w-5 h-5" />,
-    },
-    {
-      id: 'partnership',
-      title: m.whyHurevo6Title(),
-      description: m.whyHurevo6Desc(),
-      icon: <Handshake className="w-5 h-5" />,
+      icon: <TrendingUp className="w-5 h-5" />,
     },
   ];
 
@@ -50,16 +32,14 @@ export function WhyHurevoSection() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{m.whyHurevoSubheader()}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {differentiators.map((item) => (
-            <div key={item.id} className="flex gap-4 p-5 rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm">
-              <div className="shrink-0 p-2 rounded-lg bg-primary/10 text-primary h-fit">
+            <div key={item.id} className="flex flex-col items-center text-center p-6 rounded-xl border border-border/50 bg-background/60 backdrop-blur-sm">
+              <div className="shrink-0 p-3 rounded-full bg-primary/10 text-primary mb-4">
                 {item.icon}
               </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-1.5">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-              </div>
+              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>

@@ -1,10 +1,15 @@
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
 import GlowingBorderButton from '../glowing-border-button';
+import { Button } from '@/components/ui/button';
 
 export function HeroSection() {
   const scrollToContact = () => {
     document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToProcess = () => {
+    document.getElementById('how-we-work-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -17,14 +22,17 @@ export function HeroSection() {
         {m.heroTitle()}
       </h1>
 
-      <p className="text-xl text-muted-foreground mb-10 max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+      <p className="text-xl text-muted-foreground mb-10 max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
         {m.heroSubtitle()}
       </p>
 
-      <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
-        <GlowingBorderButton onClick={scrollToContact} >
+      <div className="flex flex-col sm:flex-row items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-500">
+        <GlowingBorderButton onClick={scrollToContact}>
             {m.heroCTA()}
         </GlowingBorderButton>
+        <Button variant="outline" size="lg" onClick={scrollToProcess} className="h-14 md:h-16 px-8 text-base md:text-lg font-semibold">
+          {m.heroSecondaryCTA()}
+        </Button>
       </div>
     </section>
   );

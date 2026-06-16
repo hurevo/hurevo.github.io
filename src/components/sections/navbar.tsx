@@ -52,9 +52,8 @@ export default function NavbarSection({
 }: NavbarProps) {
     const navLinks: NavbarLink[] = [
         { text: m.navServices(), href: localizeHref("/#services-section") },
-        { text: m.navCloud(), href: localizeHref("/cloud") },
-        { text: m.navProcess(), href: localizeHref("/#process-section") },
-        { text: m.navIndustries(), href: localizeHref("/#industry-section") },
+        { text: m.navHowWeWork(), href: localizeHref("/#how-we-work-section") },
+        { text: m.navWhoItsFor(), href: localizeHref("/#who-its-for-section") },
         { text: m.navPortfolio(), href: localizeHref("/#portfolio-section") },
     ];
 

@@ -1,4 +1,4 @@
-import { createRootRoute, Outlet, useLocation, ScrollRestoration } from '@tanstack/react-router';
+import { createRootRoute, Outlet, useLocation } from '@tanstack/react-router';
 import { useEffect, useLayoutEffect, useMemo } from 'react';
 // @ts-expect-error - paraglide runtime is auto-generated
 import { setLocale, getLocaleForUrl, getLocale } from '../paraglide/runtime';
@@ -43,7 +43,6 @@ function RootRoute() {
 
     return (
         <div key={locale} className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/30 flex flex-col">
-            <ScrollRestoration />
             <NavbarSection />
             <main className="flex flex-col items-center w-full grow">
                 <Outlet />

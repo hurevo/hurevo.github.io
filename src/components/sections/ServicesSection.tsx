@@ -1,6 +1,5 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Code, Workflow, Bot, RefreshCw, ArrowRight } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Search, Database, Workflow, Compass } from 'lucide-react';
 // @ts-expect-error - paraglide messages import
 import * as m from '@/paraglide/messages';
 
@@ -11,32 +10,28 @@ export function ServicesSection() {
 
   const services = [
     {
-      id: 'custom-software',
+      id: 'process-audit',
       title: m.service1Title(),
       description: m.service1Desc(),
-      highlight: m.service1Highlight(),
-      icon: <Code className="w-8 h-8" />,
+      icon: <Search className="w-8 h-8" />,
     },
     {
-      id: 'automation',
+      id: 'erp-implementation',
       title: m.service2Title(),
       description: m.service2Desc(),
-      highlight: m.service2Highlight(),
+      icon: <Database className="w-8 h-8" />,
+    },
+    {
+      id: 'integration-automation',
+      title: m.service3Title(),
+      description: m.service3Desc(),
       icon: <Workflow className="w-8 h-8" />,
     },
     {
-      id: 'ai-solutions',
-      title: m.service3Title(),
-      description: m.service3Desc(),
-      highlight: m.service3Highlight(),
-      icon: <Bot className="w-8 h-8" />,
-    },
-    {
-      id: 'legacy-modernization',
+      id: 'tech-advisory',
       title: m.service4Title(),
       description: m.service4Desc(),
-      highlight: m.service4Highlight(),
-      icon: <RefreshCw className="w-8 h-8" />,
+      icon: <Compass className="w-8 h-8" />,
     },
   ];
 
@@ -65,16 +60,6 @@ export function ServicesSection() {
                 {service.description}
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <Badge variant="secondary" className="text-sm font-medium">
-                {service.highlight}
-              </Badge>
-            </CardContent>
-            <CardFooter>
-              <span className="text-sm font-medium text-primary flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                {m.servicesCTA()} <ArrowRight className="w-4 h-4" />
-              </span>
-            </CardFooter>
           </Card>
         ))}
       </div>
